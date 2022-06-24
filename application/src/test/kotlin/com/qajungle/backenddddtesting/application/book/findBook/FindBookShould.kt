@@ -1,6 +1,5 @@
 package com.qajungle.backenddddtesting.application.book.findBook
 
-import com.lookiero.platform.backendddtesting.domain.read.book.*
 import com.qajungle.backendddtesting.domain.read.book.*
 import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs

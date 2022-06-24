@@ -7,7 +7,7 @@ import com.qajungle.backendddtesting.shared.messagebus.core.query.QueryHandler
 
 class FindBook(val reader : BookReader) : QueryHandler<FindBookQuery, Book?> {
 
-  override fun ask(query: FindBookQuery): Book? {
+  override fun ask(query: FindBookQuery) : Book? {
     val bookId = BookId(query.id)
     return reader.findById(bookId)
   }
