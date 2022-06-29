@@ -10,9 +10,9 @@ repositories {
 }
 
 dependencies {
-  testImplementation(kotlin("test"))
-
   implementation("org.valiktor:valiktor-core:0.12.0")
+
+  testImplementation(kotlin("test"))
 }
 
 tasks.test {
