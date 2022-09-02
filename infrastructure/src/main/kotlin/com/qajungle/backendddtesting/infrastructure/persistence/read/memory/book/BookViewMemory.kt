@@ -3,11 +3,11 @@ package com.qajungle.backendddtesting.infrastructure.persistence.read.memory.boo
 import com.qajungle.backendddtesting.domain.read.book.*
 
 class BookViewMemory : BookReader {
-  override fun findById(id: BookId): Book? {
-    return Book(
-      BookId(),
-      BookISBN("BookISBN"),
-      BookName("BookName")
+  override fun findById(id: BookIdView): BookView? {
+    return BookView(
+      BookIdView(),
+      BookISBNView("BookISBN"),
+      BookNameView("BookName")
     )
   }
 }

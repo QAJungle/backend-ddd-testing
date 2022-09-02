@@ -18,6 +18,7 @@ class FindBookController(private val commandBus: CommandBus) {
   fun get(@PathVariable bookId: UUID) : ResponseEntity<FindBookResponse> {
     val book = commandBus.executeQuery(FindBookQuery(bookId))
     book?: throw BookNotFound(bookId)
+
     return ResponseEntity.ok(FindBookResponse(
       book.id.value.toString(),
       book.isbn.value,

@@ -1,9 +1,9 @@
 package com.qajungle.backendddtesting.domain.book
 
-import com.qajungle.backendddtesting.domain.read.book.Book
-import com.qajungle.backendddtesting.domain.read.book.BookISBN
-import com.qajungle.backendddtesting.domain.read.book.BookId
-import com.qajungle.backendddtesting.domain.read.book.BookName
+import com.qajungle.backendddtesting.domain.read.book.BookView
+import com.qajungle.backendddtesting.domain.read.book.BookISBNView
+import com.qajungle.backendddtesting.domain.read.book.BookIdView
+import com.qajungle.backendddtesting.domain.read.book.BookNameView
 import com.qajungle.backendddtesting.domain.shared.DomainError
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -14,12 +14,12 @@ internal class BookShould {
   @Test
   fun create_with_a_correct_data() {
     //given
-    val id   = BookId()
-    val isbn = BookISBN("ISBN")
-    val name = BookName("NAME")
+    val id   = BookIdView()
+    val isbn = BookISBNView("ISBN")
+    val name = BookNameView("NAME")
 
     //when
-    val subject = Book(id, isbn, name)
+    val subject = BookView(id, isbn, name)
 
     //then
     assertEquals(id, subject.id)
@@ -31,7 +31,7 @@ internal class BookShould {
   fun fail_to_create_isbn_with_incorrect_data() {
     //when - then
     assertFailsWith(DomainError::class) {
-      BookISBN("")
+      BookISBNView("")
     }
   }
 
@@ -39,7 +39,7 @@ internal class BookShould {
   fun fail_to_create_name_with_incorrect_data() {
     //when - then
     assertFailsWith(DomainError::class) {
-      BookName("")
+      BookNameView("")
     }
   }
 }

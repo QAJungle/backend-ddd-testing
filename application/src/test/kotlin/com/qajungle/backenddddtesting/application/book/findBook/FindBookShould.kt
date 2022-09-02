@@ -27,12 +27,11 @@ class FindBookShould {
     //-- given
     val query = FindBookQuery(UUID.randomUUID())
     //and
-    val book = Book(
-      BookId(),
-      BookISBN("ISBN"),
-      BookName("NAME")
+    val book = BookView(
+      BookIdView(),
+      BookISBNView("ISBN"),
+      BookNameView("NAME")
     )
-
     every { reader.findById(any()) } returns book
 
     //-- when
