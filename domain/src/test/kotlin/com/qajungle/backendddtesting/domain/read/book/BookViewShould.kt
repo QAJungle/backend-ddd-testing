@@ -1,24 +1,21 @@
-package com.qajungle.backendddtesting.domain.book
+package com.qajungle.backendddtesting.domain.read.book
 
-import com.qajungle.backendddtesting.domain.read.book.BookView
-import com.qajungle.backendddtesting.domain.read.book.BookISBNView
-import com.qajungle.backendddtesting.domain.read.book.BookIdView
-import com.qajungle.backendddtesting.domain.read.book.BookNameView
 import com.qajungle.backendddtesting.domain.shared.DomainError
+import com.qajungle.backendddtesting.domain.stub.BookStub
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-internal class BookShould {
+internal class BookViewShould {
 
   @Test
   fun create_with_a_correct_data() {
     //given
-    val id   = BookIdView()
-    val isbn = BookISBNView("ISBN")
-    val name = BookNameView("NAME")
+    val id   = BookStub.view().id
+    val isbn = BookStub.view().isbn
+    val name = BookStub.view().name
 
-    //when
+    //given
     val subject = BookView(id, isbn, name)
 
     //then

@@ -13,6 +13,7 @@ dependencies {
   implementation("org.valiktor:valiktor-core:0.12.0")
 
   testImplementation(kotlin("test"))
+  testImplementation("net.datafaker:datafaker:1.5.0")
 }
 
 tasks.test {
