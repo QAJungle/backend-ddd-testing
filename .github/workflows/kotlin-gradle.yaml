@@ -1,0 +1,13 @@
+name: Kotlin gradle CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
+      - name: Build with Gradle
+        run: ./gradlew build
