@@ -5,15 +5,15 @@ import org.valiktor.ConstraintViolationException
 import org.valiktor.functions.isNotBlank
 import org.valiktor.validate
 
-data class BookISBN (var value : String) {
+data class BookNameView (var value : String) {
     init {
         try {
             validate(this) {
-                validate(BookISBN::value).isNotBlank()
+                validate(BookNameView::value).isNotBlank()
             }
         } catch (ex: ConstraintViolationException) {
             throw DomainError("DOMAIN-001",
-                "BookISBN validation error")
+                "BookName validation error")
         }
     }
 }

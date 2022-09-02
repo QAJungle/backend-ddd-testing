@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.domain.read.book
+package com.qajungle.backendddtesting.domain.write
 
 import com.qajungle.backendddtesting.domain.shared.Identifier
 import java.util.UUID
