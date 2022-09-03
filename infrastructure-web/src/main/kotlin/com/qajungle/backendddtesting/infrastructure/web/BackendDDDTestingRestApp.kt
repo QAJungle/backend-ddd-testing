@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class BackendDDDTestingApp
+class BackendDDDTestingRestApp
 
 fun main(args: Array<String>) {
-  runApplication<BackendDDDTestingApp>(*args)
+  runApplication<BackendDDDTestingRestApp>(*args)
 }
