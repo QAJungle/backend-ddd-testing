@@ -4,6 +4,7 @@ import com.qajungle.backenddddtesting.application.book.addBook.AddBookCommand
 import com.qajungle.backenddddtesting.application.book.findBook.FindBookQuery
 import com.qajungle.backendddtesting.domain.read.book.BookNotFound
 import com.qajungle.backendddtesting.infrastructure.console.commands.book.v1.presenter.BookPresenter
+import com.qajungle.backendddtesting.infrastructure.console.shared.Help
 import com.trendyol.kediatr.CommandBus
 import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
@@ -20,8 +21,8 @@ class AddBookShellCommand(
     value = "Add a new book",
     group = "Book management")
   fun get(
-    @ShellOption(value = ["-i", "--isbn"] , help = "Isbn field") isbn : String,
-    @ShellOption(value = ["-n", "--name"] , help = "Name field") name : String
+    @ShellOption(value = ["-i", "--isbn"] , help = Help.HELP_BOOK_ISBN) isbn : String,
+    @ShellOption(value = ["-n", "--name"] , help = Help.HELP_BOOK_NAME) name : String
   ) {
     val bookId = UUID.randomUUID()
     commandBus.executeCommand(AddBookCommand(bookId, isbn, name))

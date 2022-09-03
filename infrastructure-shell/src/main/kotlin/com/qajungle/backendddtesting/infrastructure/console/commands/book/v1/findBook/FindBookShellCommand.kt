@@ -3,6 +3,7 @@ package com.qajungle.backendddtesting.infrastructure.console.commands.book.v1.fi
 import com.qajungle.backenddddtesting.application.book.findBook.FindBookQuery
 import com.qajungle.backendddtesting.domain.read.book.BookNotFound
 import com.qajungle.backendddtesting.infrastructure.console.commands.book.v1.presenter.BookPresenter
+import com.qajungle.backendddtesting.infrastructure.console.shared.Help
 import com.trendyol.kediatr.CommandBus
 import org.springframework.shell.standard.ShellComponent
 import org.springframework.shell.standard.ShellMethod
@@ -15,11 +16,11 @@ class FindBookShellCommand(
   private val presenter: BookPresenter) {
 
   @ShellMethod(
-    key = ["get-book", "gb"],
-    value = "Get a book",
+    key = ["find-book", "fb"],
+    value = "Find a book",
     group = "Book management")
   fun get(
-    @ShellOption(value = ["-i"] , help = "Id field", defaultValue = "id") bookId : UUID
+    @ShellOption(value = ["-i", "--id"] , help = Help.HELP_BOOK_ID) bookId : UUID
   ) {
     val book = commandBus.executeQuery(FindBookQuery(bookId))
     book?: throw BookNotFound(bookId)
