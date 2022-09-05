@@ -5,17 +5,13 @@ services:
     image: postgres:14.5-alpine
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: backendddtesting
+      - POSTGRES_DB=backend_ddd_testing
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     ports:
       - "5432:5432"
     volumes:
-      - db:/var/lib/postgresql/data
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8081:8080"
+      - ./db:/var/lib/postgresql/data
 volumes:
   db:
     driver: local
