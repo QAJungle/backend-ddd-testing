@@ -4,8 +4,6 @@ import com.qajungle.backendddtesting.domain.read.book.BookReader
 import com.qajungle.backendddtesting.domain.write.BookWriter
 import com.qajungle.backendddtesting.infrastructure.persistence.read.jpa.book.BookJPAReaderRepository
 import com.qajungle.backendddtesting.infrastructure.persistence.read.jpa.book.BookViewJPA
-import com.qajungle.backendddtesting.infrastructure.persistence.read.memory.book.BookViewMemory
-import com.qajungle.backendddtesting.infrastructure.persistence.write.console.book.BookWriterConsole
 import com.qajungle.backendddtesting.infrastructure.persistence.write.jpa.book.BookJPA
 import com.qajungle.backendddtesting.infrastructure.persistence.write.jpa.book.BookJPARepository
 import org.springframework.beans.factory.annotation.Autowired

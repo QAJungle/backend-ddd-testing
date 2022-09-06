@@ -20,6 +20,7 @@ dependencies {
   implementation(project(":infrastructure"))
 
   implementation("org.springframework.shell:spring-shell-starter:2.1.1")
+  implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.7.3")
   implementation("com.trendyol:kediatr-spring-starter:1.0.18")
 
   testImplementation(kotlin("test"))
