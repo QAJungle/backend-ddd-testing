@@ -14,6 +14,12 @@ repositories {
   mavenCentral()
 }
 
+sourceSets.create("integrationTest") {
+  java.srcDir("src/integrationTest/java")
+  java.srcDir("src/integrationTest/kotlin")
+  resources.srcDir("src/integrationTest/resources")
+}
+
 dependencies {
   implementation(project(":domain"))
   implementation(project(":application"))
@@ -27,8 +33,11 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
   implementation("com.trendyol:kediatr-spring-starter:1.0.18")
 
-  testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation(kotlin("test"))
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  testImplementation("org.testcontainers:postgresql:1.17.3")
+  testImplementation("org.testcontainers:junit-jupiter:1.17.3")
+  testImplementation("net.datafaker:datafaker:1.5.0")
 }
 
 tasks.bootJar {
@@ -44,4 +53,11 @@ tasks.compileKotlin {
 
 tasks.test {
   useJUnitPlatform()
+}
+
+tasks.register<Test>("integrationTest") {
+  description = "Run integration tests"
+  group = "verification"
+  testClassesDirs = sourceSets.getByName("integrationTest").compileClasspath
+  classpath = sourceSets.getByName("integrationTest").runtimeClasspath
 }
