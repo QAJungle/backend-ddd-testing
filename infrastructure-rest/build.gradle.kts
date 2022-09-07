@@ -14,11 +14,18 @@ repositories {
   mavenCentral()
 }
 
-sourceSets.create("integrationTest") {
-  java.srcDir("src/integrationTest/java")
-  java.srcDir("src/integrationTest/kotlin")
-  resources.srcDir("src/integrationTest/resources")
+sourceSets {
+  create("integrationTest") {
+    compileClasspath += sourceSets.main.get().output
+    runtimeClasspath += sourceSets.main.get().output
+  }
 }
+
+val integrationTestImplementation by configurations.getting {
+  extendsFrom(configurations.testImplementation.get())
+}
+
+configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.testRuntimeOnly.get())
 
 dependencies {
   implementation(project(":domain"))
@@ -55,9 +62,15 @@ tasks.test {
   useJUnitPlatform()
 }
 
-tasks.register<Test>("integrationTest") {
-  description = "Run integration tests"
+val integrationTest = task<Test>("integrationTest") {
+  description = "Runs integration tests."
   group = "verification"
-  testClassesDirs = sourceSets.getByName("integrationTest").compileClasspath
-  classpath = sourceSets.getByName("integrationTest").runtimeClasspath
+
+  testClassesDirs = sourceSets["integrationTest"].output.classesDirs
+  classpath = sourceSets["integrationTest"].runtimeClasspath
+
+  useJUnitPlatform()
+  shouldRunAfter("test")
 }
+
+tasks.check { dependsOn(integrationTest) }
