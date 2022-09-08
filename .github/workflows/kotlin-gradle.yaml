@@ -11,9 +11,15 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up kotlin
         uses: fwilhe2/setup-kotlin@main
-      - name: Build docker images
-        uses: addnab/docker-run-action@v3
-        run: ./gradlew cleanTest test
+      - name: Build with Gradle
+        run: |
+          docker run -i --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v "$HOME:$HOME" \
+            -v "$PWD:$PWD" \
+            -w "$PWD" \
+            openjdk:18-jdk-alpine \
+            ./gradlew test
   build:
     runs-on: ubuntu-latest
     steps:
