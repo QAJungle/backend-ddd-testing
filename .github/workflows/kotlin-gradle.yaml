@@ -3,11 +3,23 @@ name: Kotlin gradle CI
 on: [push]
 
 jobs:
+  test:
+    name: Run test suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
+      - name: Build docker images
+        uses: addnab/docker-run-action@v3
+        run: ./gradlew cleanTest test
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Set up kotlin
         uses: fwilhe2/setup-kotlin@main
       - name: Build with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew build -x test
