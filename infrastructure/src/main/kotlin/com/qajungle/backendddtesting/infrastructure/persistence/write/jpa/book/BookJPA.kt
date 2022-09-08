@@ -10,5 +10,6 @@ class BookJPA(private val repository: BookJPARepository) : BookWriter {
   override fun add(book: Book) {
     val entity = BookJPAEntity.fromDomain(book)
     repository.save(entity)
+    repository.flush()
   }
 }

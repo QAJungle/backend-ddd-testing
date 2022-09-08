@@ -14,6 +14,19 @@ repositories {
   mavenCentral()
 }
 
+sourceSets {
+  create("integrationTest") {
+    compileClasspath += sourceSets.main.get().output
+    runtimeClasspath += sourceSets.main.get().output
+  }
+}
+
+val integrationTestImplementation by configurations.getting {
+  extendsFrom(configurations.testImplementation.get())
+}
+
+configurations["integrationTestRuntimeOnly"].extendsFrom(configurations.testRuntimeOnly.get())
+
 dependencies {
   implementation(project(":domain"))
   implementation(project(":application"))
@@ -27,8 +40,11 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
   implementation("com.trendyol:kediatr-spring-starter:1.0.18")
 
-  testImplementation("org.springframework.boot:spring-boot-starter-test")
   testImplementation(kotlin("test"))
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+  testImplementation("org.testcontainers:postgresql:1.17.3")
+  testImplementation("org.testcontainers:junit-jupiter:1.17.3")
+  testImplementation("net.datafaker:datafaker:1.5.0")
 }
 
 tasks.bootJar {
@@ -45,3 +61,16 @@ tasks.compileKotlin {
 tasks.test {
   useJUnitPlatform()
 }
+
+val integrationTest = task<Test>("integrationTest") {
+  description = "Runs integration tests."
+  group = "verification"
+
+  testClassesDirs = sourceSets["integrationTest"].output.classesDirs
+  classpath = sourceSets["integrationTest"].runtimeClasspath
+
+  useJUnitPlatform()
+  shouldRunAfter("test")
+}
+
+tasks.check { dependsOn(integrationTest) }
