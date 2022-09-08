@@ -11,7 +11,9 @@ jobs:
         uses: actions/checkout@v3
       - name: Set up kotlin
         uses: fwilhe2/setup-kotlin@main
-      - name: Launch tests and integrationTests
+      - name: Launch unit test
+        run: ./gradlew cleanTest test
+      - name: Launch integration tests
         run: |
           docker run -i --rm \
             -v /var/run/docker.sock:/var/run/docker.sock \
@@ -19,7 +21,7 @@ jobs:
             -v "$PWD:$PWD" \
             -w "$PWD" \
             openjdk:18-jdk-alpine \
-            ./gradlew test
+            ./gradlew cleanIntegrationTest integrationTest
   build:
     runs-on: ubuntu-latest
     steps:

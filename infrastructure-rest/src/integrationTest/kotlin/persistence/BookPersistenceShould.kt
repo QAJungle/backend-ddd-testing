@@ -40,7 +40,7 @@ internal class BookPersistenceShould {
 
     //-- then
     assertEquals(book.id.value, obtained?.id?.value)
-    assertEquals("book.isbn.value", obtained?.isbn?.value)
+    assertEquals(book.isbn.value, obtained?.isbn?.value)
     assertEquals(book.name.value, obtained?.name?.value)
   }
 }
