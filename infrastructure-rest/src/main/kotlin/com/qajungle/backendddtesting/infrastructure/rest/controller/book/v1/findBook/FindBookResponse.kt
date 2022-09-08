@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web.controller.book.v1.findBook
+package com.qajungle.backendddtesting.infrastructure.rest.controller.book.v1.findBook
 
 class FindBookResponse(var id   : String,
                        var isbn : String,

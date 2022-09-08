@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web.config.book
+package com.qajungle.backendddtesting.infrastructure.rest.config.book
 
 import com.qajungle.backendddtesting.domain.read.book.BookReader
 import com.qajungle.backendddtesting.domain.write.BookWriter

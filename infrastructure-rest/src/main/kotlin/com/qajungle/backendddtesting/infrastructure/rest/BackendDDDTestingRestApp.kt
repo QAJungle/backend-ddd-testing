@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web
+package com.qajungle.backendddtesting.infrastructure.rest
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

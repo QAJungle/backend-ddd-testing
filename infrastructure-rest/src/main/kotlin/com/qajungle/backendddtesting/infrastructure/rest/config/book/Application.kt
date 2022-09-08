@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web.config.book
+package com.qajungle.backendddtesting.infrastructure.rest.config.book
 
 import com.qajungle.backenddddtesting.application.book.addBook.AddBook
 import com.qajungle.backenddddtesting.application.book.findBook.FindBook

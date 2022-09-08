@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web.controller.book.v1.findBook
+package com.qajungle.backendddtesting.infrastructure.rest.controller.book.v1.findBook
 
 import com.qajungle.backenddddtesting.application.book.findBook.FindBookQuery
 import com.qajungle.backendddtesting.domain.read.book.BookNotFound

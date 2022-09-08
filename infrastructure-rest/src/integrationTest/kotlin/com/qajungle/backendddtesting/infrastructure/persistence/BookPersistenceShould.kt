@@ -5,8 +5,8 @@ import com.qajungle.backendddtesting.infrastructure.persistence.initializer.Base
 import com.qajungle.backendddtesting.infrastructure.persistence.read.jpa.book.BookViewJPA
 import com.qajungle.backendddtesting.infrastructure.persistence.stub.BookStub
 import com.qajungle.backendddtesting.infrastructure.persistence.write.jpa.book.BookJPA
-import com.qajungle.backendddtesting.infrastructure.web.config.book.Application
-import com.qajungle.backendddtesting.infrastructure.web.config.book.Persistence
+import com.qajungle.backendddtesting.infrastructure.rest.config.book.Application
+import com.qajungle.backendddtesting.infrastructure.rest.config.book.Persistence
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest

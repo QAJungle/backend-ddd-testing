@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web.controller.book.v1.exception
+package com.qajungle.backendddtesting.infrastructure.rest.controller.book.v1.exception
 
 import com.qajungle.backendddtesting.domain.read.book.BookNotFound
 import org.springframework.http.HttpStatus

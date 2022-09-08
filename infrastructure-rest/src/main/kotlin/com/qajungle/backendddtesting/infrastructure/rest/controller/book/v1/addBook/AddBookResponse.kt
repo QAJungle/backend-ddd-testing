@@ -1,4 +1,4 @@
-package com.qajungle.backendddtesting.infrastructure.web.controller.book.v1.addBook
+package com.qajungle.backendddtesting.infrastructure.rest.controller.book.v1.addBook
 
 class AddBookResponse(var id   : String,
                       var isbn : String,

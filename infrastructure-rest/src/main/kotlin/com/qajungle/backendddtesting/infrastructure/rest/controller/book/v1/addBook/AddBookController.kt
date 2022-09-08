@@ -1,9 +1,10 @@
-package com.qajungle.backendddtesting.infrastructure.web.controller.book.v1.addBook
+package com.qajungle.backendddtesting.infrastructure.rest.controller.book.v1.addBook
 
 import com.qajungle.backenddddtesting.application.book.addBook.AddBookCommand
 import com.qajungle.backenddddtesting.application.book.findBook.FindBookQuery
 import com.qajungle.backendddtesting.domain.read.book.BookNotFound
 import com.trendyol.kediatr.CommandBus
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
@@ -23,9 +24,10 @@ class AddBookController(private val commandBus: CommandBus) {
     val book = commandBus.executeQuery(FindBookQuery(bookId))
     book?: throw BookNotFound(bookId)
 
-    return ResponseEntity.ok(AddBookResponse(
+    return ResponseEntity(AddBookResponse(
       book.id.value.toString(),
       book.isbn.value,
-      book.name.value))
+      book.name.value),
+      HttpStatus.CREATED)
   }
 }
