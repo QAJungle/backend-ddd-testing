@@ -39,4 +39,4 @@ jobs:
       - name: Set up kotlin
         uses: fwilhe2/setup-kotlin@main
       - name: Build with Gradle
-        run: ./gradlew build -x test -x integrationTest
+        run: ./gradlew build -x test -x integrationTest -x e2eTest
