@@ -1,6 +1,7 @@
 plugins {
   id("org.springframework.boot") version "2.7.1"
   id("io.spring.dependency-management") version "1.0.11.RELEASE"
+  id("com.avast.gradle.docker-compose") version "0.16.9"
 
   kotlin("jvm")
   kotlin("plugin.spring") version "1.6.21"
@@ -99,3 +100,11 @@ val e2eTest = task<Test>("e2eTest") {
 }
 
 tasks.check { dependsOn(integrationTest) }
+
+dockerCompose.isRequiredBy(e2eTest)
+
+dockerCompose {
+  useComposeFiles.add("../.github/ci/docker-compose.yaml")
+  setProjectName("backend-ddd-testing")
+  projectNamePrefix.plus("_")
+}
