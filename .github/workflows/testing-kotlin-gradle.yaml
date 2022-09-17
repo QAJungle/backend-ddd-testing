@@ -1,0 +1,44 @@
+name: Testing kotlin gradle application CI
+
+on: [push]
+
+jobs:
+  unitTest:
+    name: Run unit test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
+      - name: Launch unit test
+        run: ./gradlew cleanTest test
+  integrationTest:
+    name: Run integration test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
+      - name: Launch integration tests
+        run: |
+          docker run -i --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v "$HOME:$HOME" \
+            -v "$PWD:$PWD" \
+            -w "$PWD" \
+            openjdk:18-jdk-alpine \
+            ./gradlew cleanIntegrationTest integrationTest
+  e2eTest:
+    name: Run Build and isolated E2E test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
+      - name: Build with Gradle
+        run: ./gradlew build -x test -x integrationTest -x e2eTest
+      - name: Launch E2E tests
+        run: ./gradlew cleanE2eTest e2eTest

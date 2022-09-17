@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      open-in-view: false
+      properties.hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        event.merge.entity_copy_observer: allow
+        physical_naming_strategy: com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy
+  datasource:
+    url: jdbc:postgresql://db:5432/backend_ddd_testing?serverTimezone=UTC
+    username: postgres
+    password: postgres
