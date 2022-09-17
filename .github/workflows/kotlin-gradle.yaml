@@ -3,8 +3,8 @@ name: Kotlin gradle CI
 on: [push]
 
 jobs:
-  test:
-    name: Run unit and integration test
+  unitTest:
+    name: Run unit test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -13,6 +13,14 @@ jobs:
         uses: fwilhe2/setup-kotlin@main
       - name: Launch unit test
         run: ./gradlew cleanTest test
+  integrationTest:
+    name: Run integration test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
       - name: Launch integration tests
         run: |
           docker run -i --rm \
@@ -22,8 +30,16 @@ jobs:
             -w "$PWD" \
             openjdk:18-jdk-alpine \
             ./gradlew cleanIntegrationTest integrationTest
+  e2eTest:
+    name: Run unit and integration test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up kotlin
+        uses: fwilhe2/setup-kotlin@main
       - name: Launch E2E tests
-        run: ./gradlew e2eTest
+        run: ./gradlew cleanE2eTest e2eTest
   build:
     runs-on: ubuntu-latest
     steps:
