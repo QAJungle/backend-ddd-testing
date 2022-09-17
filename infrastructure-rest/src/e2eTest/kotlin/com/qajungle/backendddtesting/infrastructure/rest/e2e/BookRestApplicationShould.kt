@@ -39,7 +39,7 @@ class BookRestApplicationShould : BaseTest() {
     } Then {
       statusCode(HttpStatus.SC_OK)
       body("id", equalTo(bookId))
-      body("isbn", equalTo("requestBody.isbn"))
+      body("isbn", equalTo(requestBody.isbn))
       body("name", equalTo(requestBody.name))
     }
   }

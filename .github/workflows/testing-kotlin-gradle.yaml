@@ -1,4 +1,4 @@
-name: Kotlin gradle CI
+name: Testing kotlin gradle application CI
 
 on: [push]
 
@@ -31,7 +31,7 @@ jobs:
             openjdk:18-jdk-alpine \
             ./gradlew cleanIntegrationTest integrationTest
   e2eTest:
-    name: Run Build and E2E test
+    name: Run Build and isolated E2E test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
