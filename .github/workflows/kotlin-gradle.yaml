@@ -23,7 +23,7 @@ jobs:
             openjdk:18-jdk-alpine \
             ./gradlew cleanIntegrationTest integrationTest
       - name: Launch E2E tests
-        run: ./gradlew cleanE2eTest e2eTest
+        run: ./gradlew e2eTest
   build:
     runs-on: ubuntu-latest
     steps:
