@@ -31,7 +31,7 @@ jobs:
             openjdk:18-jdk-alpine \
             ./gradlew cleanIntegrationTest integrationTest
   e2eTest:
-    name: Run unit and integration test
+    name: Run E2E test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -39,7 +39,7 @@ jobs:
       - name: Set up kotlin
         uses: fwilhe2/setup-kotlin@main
       - name: Launch E2E tests
-        run: ./gradlew cleanE2eTest e2eTest
+        run: ./gradlew cleanE2eTest build e2eTest
   build:
     runs-on: ubuntu-latest
     steps:
