@@ -1,0 +1,3 @@
+= Kotlin DDD testing
+
+In this project you can find some  examples of how test your application with a *simple quality network*.

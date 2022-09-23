@@ -1,4 +1,4 @@
-rootProject.name = "backend-ddd-testing"
+rootProject.name = "kotlin-ddd-testing"
 
 include("domain")
 include("application")
