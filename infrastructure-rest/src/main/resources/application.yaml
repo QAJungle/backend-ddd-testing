@@ -11,6 +11,6 @@ spring:
         event.merge.entity_copy_observer: allow
         physical_naming_strategy: com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy
   datasource:
-    url: jdbc:postgresql://localhost:5432/backend_ddd_testing?serverTimezone=UTC
+    url: jdbc:postgresql://localhost:5432/kotlin_ddd_testing?serverTimezone=UTC
     username: postgres
     password: postgres

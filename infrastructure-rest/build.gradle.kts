@@ -105,6 +105,6 @@ dockerCompose.isRequiredBy(e2eTest)
 
 dockerCompose {
   useComposeFiles.add("../.github/ci/docker-compose.yaml")
-  setProjectName("backend-ddd-testing")
+  setProjectName("kotlin-ddd-testing")
   projectNamePrefix.plus("_")
 }
